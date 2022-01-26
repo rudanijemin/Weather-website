@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" 
+	rel="stylesheet">
+
 	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 		* {
 			padding: 0;
 			margin: 0;
@@ -130,14 +132,14 @@
 			font-size: 1.2rem;
 			color: rgb(27, 24, 24);
 		}
-		#weathercon {
+		#weather {
 			height: 55%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			font-size: 3rem;
 		}
-		#weathercon .fas{
+		#weather .fas{
 			font-size: 6rem;
 			animation: fas-anime 3s linear infinite alternate;
 		}
@@ -158,19 +160,37 @@
 		<div class="wave one"> </div>
 		
 		<div class="wave two"> </div>
-		<div class="weathercon">
+		<div class="weather">
 			<i class="fas fa-sun" style="color:rgb(240, 173, 74)"></i>
 		</div>
 		<div class="info">
-			<h2 class="location"><i class="fas fa-street-view" style="color: aliceblue;"></i> Pune,in</h2>
+			<h2 class="location"><i class="fas fa-street-view" style="color: aliceblue;"></i> Surat,in</h2>
 			<p id="date"> WED | OCT 23 |10:33AM </p>
 			<h1 class="temp">26.67C</h1>
 			<h3 class="tempmin_max">min 26.5C | max 29.7C</h3>
 		</div>
-		
-		
-
 	</div>
+	<script>
+		const curDate = document.getAnimations("date");
+		let weather =document.getElementById("weather");
+
+		const tempStatus = "clouds";
+
+		const getCurrentDay = ()=>{
+			var weekday =new Array(7);
+			weekday[0] = "sunday";
+			weekday[1] = "monday";
+			weekday[2] = "tuesday";
+			weekday[3] = "wednesday";
+			weekday[4] = "thursday";
+			weekday[5] = "friday";
+			weekday[6] = "saturday";
+
+			let currentTime = new Date();
+			console.log(weekday[currentTime.getDay()]);
+		};
+		getCurrentDay();
+	</script>
 
 </body>
 </html>
