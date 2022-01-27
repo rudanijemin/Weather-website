@@ -171,7 +171,7 @@
 		</div>
 	</div>
 	<script>
-		const curDate = document.getAnimations("date");
+		const curDate = document.getElementById("date");
 		let weather =document.getElementById("weather");
 
 		const tempStatus = "clouds";
@@ -187,9 +187,48 @@
 			weekday[6] = "saturday";
 
 			let currentTime = new Date();
-			console.log(weekday[currentTime.getDay()]);
+			let day = weekday[currentTime.getDay()];
+			return day;
 		};
-		getCurrentDay();
+		//getCurrentDay();
+		const getCurrentTime = ()=>{
+			var months = [
+			"jan",
+			"feb",
+			"mar",                               
+			"Aap",
+			"may",
+			"jun",
+			"jul",
+			"aug",
+			"sep",
+			"oct",
+			"nov",
+			"dec",
+			];
+			var now = new Date();
+			var month = months[now.getMonth() ];
+			var date = now.getDate();
+
+			let hours = now.getHours();
+			let mins = now.getMinutes();
+
+			let periods = "AM";
+			if(hours > 11){
+				periods = "PM";
+				if(hours >12) hours -=12;
+			}
+			if (mins <10){
+				mins = "0" + mins;	
+			}
+			return `${month} ${date} | ${hours}:${mins}${periods}`;
+			
+
+		};
+		curDate.innerHTML = getCurrentDay() + "|" +getCurrentTime();
+		
+
+		
 	</script>
 
 </body>
