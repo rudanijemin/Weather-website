@@ -137,7 +137,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			font-size: 3rem;
+			font-size: 3em;
 		}
 		#weather .fas{
 			font-size: 6rem;
@@ -145,12 +145,41 @@
 		}
 		@keyframes rotates {
 			from {
-				transform: scale(1.1);
+				transform: scale(0.8);
 			}
 			to {
 				transform: scale(1.8);
 			}
 		}
+		@media (max-width: 600px){
+			.box{
+				width: 90vw;
+				height: 80vw;
+			}
+			.wave{
+				top: 85%;
+			}
+			#weather {
+				font-size: 5em;
+			}
+			.info{
+				font-size: 1.5rem;
+			}
+		}
+		@media (max-height: 500px){
+			.box{
+				height: 80vw;
+			}
+			.wave{
+				top: 115%;
+			}
+		}
+		body > span{
+			width: 100vw;
+			text-align: center;
+			color: grey;
+		}
+		
 
 	</style>
 
@@ -164,17 +193,28 @@
 			<i class="fas fa-sun" style="color:rgb(240, 173, 74)"></i>
 		</div>
 		<div class="info">
-			<h2 class="location"><i class="fas fa-street-view" style="color: aliceblue;"></i> Surat, in</h2>
+			<h2 class="location"><i class="fas fa-street-view" style="color: aliceblue;"></i
+				> {%location%},{%country%}</h2>		
 			<p id="date"> WED | OCT 23 |10:33AM </p>
-			<h1 class="temp">26.67C</h1>
-			<h3 class="tempmin_max">min 26.5C | max 29.7C</h3>
+			<h1 class="temp">{%tempval%}</h1>
+			<h3 class="tempmin_max">min {%tempmin%} | max {%tempmax%} </h3>
 		</div>
 	</div>
 	<script>
 		const curDate = document.getElementById("date");
 		let weather =document.getElementById("weather");
 
-		const tempStatus = "clouds";
+		const tempStatus = "{%tempStatus%}";
+
+		if(tempStatus == "sunny"){
+			weather.innerHTML = "<i class='fas fa-sun' style='color:rgb(240, 173, 74)'></i>"
+		}else if(tempStatus == "Clouds"){
+			weather.innerHTML = "<i class='fas fa-cloud' style='color:rgb(240, 173, 74)'></i>"
+		}else if(tempStatus == "Rainy"){
+			weather.innerHTML = "<i class='fas fa-rain' style='color:rgb(240, 173, 74)'></i>"
+		}else {
+			weather.innerHTML = "<i class='fas fa-sun' style='color:rgb(240, 173, 74)'></i>"
+		}
 
 		const getCurrentDay = ()=>{
 			var weekday =new Array(7);
